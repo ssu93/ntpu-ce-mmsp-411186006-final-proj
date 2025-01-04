@@ -135,7 +135,7 @@ int main(int argc, char *argv[])
 
 	int x, y;
 
-        // 輸出RGB資料盪到txt檔案
+        // 輸出RGB資料到txt檔案
 	for (x = 0; x<bmpheader.height; x++){
 	    for (y = 0; y<bmpheader.width; y++){
 		fprintf(r_out, "%02x", Data_RGB[x][y].R);
