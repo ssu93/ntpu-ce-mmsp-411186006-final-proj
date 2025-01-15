@@ -1,11 +1,11 @@
 all: build
 
 build:
-	gcc encoder.c -o encoder.exe
-	gcc decoder.c -o decoder.exe
+	gcc encoder_411186006.c -o encoder_411186006.exe
+	gcc decoder_411186006.c -o decoder_411186006.exe
 demo0:
-	./encoder.exe 0 KimberlyNCat.bmp R.txt G.txt B.txt dim_0.txt
-	./decoder.exe 0 ResKimberlyNCat.bmp R.txt G.txt B.txt dim_0.txt
+	./encoder_411186006.exe 0 KimberlyNCat.bmp R.txt G.txt B.txt dim_0.txt
+	./decoder_411186006.exe 0 ResKimberlyNCat.bmp R.txt G.txt B.txt dim_0.txt
 	diff KimberlyNCat.bmp ResKimberlyNCat.bmp
 demo0_txtdiff:
 	hexdump -C KimberlyNCat.bmp > KimberlyNCat.txt
