@@ -199,24 +199,12 @@ ImgRGB** malloc_2D(int row, int col){
 
 // 讀取輸入txt檔案的RGB資料
 void InputData(FILE* r_in, FILE* g_in, FILE* b_in,ImgRGB **array, int H, int W, int skip){
-	int temp;
-	char skip_buf[3];
-	int i, j;
-        char r_char[3], g_char[3], b_char[3];
-        r_char[2] = '\0'; g_char[2] = '\0'; b_char[2] = '\0';
-
-	for (i = 0; i<H; i++){
-		for (j = 0; j<W; j++){
-                        fread(b_char, 2, 1, b_in);
-                        array[i][j].B = (char)strtol(b_char, NULL, 16);
-                        fread(g_char, 2, 1, g_in);
-                        array[i][j].G = (char)strtol(g_char, NULL, 16);
-                        fread(r_char, 2, 1, r_in);
-                        array[i][j].R = (char)strtol(r_char, NULL, 16);
-		}
-                fread(b_char, 1, 1, b_in); // 輸出RGB每個ROW跳過跳行
-                fread(g_char, 1, 1, g_in); // 輸出RGB每個ROW跳過跳行
-                fread(r_char, 1, 1, r_in); // 輸出RGB每個ROW跳過跳行
+    	for (int i = 0; i < H; i++) {
+        	for (int j = 0; j < W; j++) {
+            		fscanf(r_in, "%hhu", &array[i][j].R);
+            		fscanf(g_in, "%hhu", &array[i][j].G);
+            		fscanf(b_in, "%hhu", &array[i][j].B);
+        	}
 	}
 }
 
