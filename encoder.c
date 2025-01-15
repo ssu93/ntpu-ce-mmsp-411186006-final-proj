@@ -133,24 +133,22 @@ int main(int argc, char *argv[])
         // 輸出寬、高和每pixel使用幾個bit的資訊到dim檔案
         fprintf(dim_out, "%d %d %d\n", H, W, bit_p);
 
-	int x, y;
+    	// 輸出RGB資料到txt檔案（ASCII格式）
+    	for (int x = 0; x < H; x++) {
+        	for (int y = 0; y < W; y++) {
+            		fprintf(r_out, "%d ", Data_RGB[x][y].R);
+            		fprintf(g_out, "%d ", Data_RGB[x][y].G);
+            		fprintf(b_out, "%d ", Data_RGB[x][y].B);
+        	}
+        	fprintf(r_out, "\n");
+        	fprintf(g_out, "\n");
+        	fprintf(b_out, "\n");
+    	}
 
-        // 輸出RGB資料到txt檔案
-	for (x = 0; x<bmpheader.height; x++){
-	    for (y = 0; y<bmpheader.width; y++){
-		fprintf(r_out, "%02x", Data_RGB[x][y].R);
-		fprintf(g_out, "%02x", Data_RGB[x][y].G);
-		fprintf(b_out, "%02x", Data_RGB[x][y].B);
-	    }
-	    fprintf(r_out, "\n"); // 輸出RGB每個ROW完成跳行
-            fprintf(g_out, "\n"); // 輸出RGB每個ROW完成跳行
-            fprintf(b_out, "\n"); // 輸出RGB每個ROW完成跳行
-	}
-    
-        fclose(r_out);
-        fclose(g_out);
-        fclose(b_out);
-        fclose(dim_out);
+    	fclose(r_out);
+    	fclose(g_out);
+    	fclose(b_out);
+    	fclose(dim_out);
 
         break;
         case 1:
